@@ -8,10 +8,11 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     // End of variables declaration   
 
     public InterfazFFMPEG() {
@@ -21,7 +22,6 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -29,18 +29,20 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Indica la ruta del ejecutable");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 204, 102));
+        jLabel1.setText("CONVERSOR FFMPEG");
 
-        jTextField1.setText("jTextField1");
-
-        jLabel2.setText("Indica el archivo de entrada");
+        jLabel2.setText("Nombre del archivo de entrada");
 
         jTextField2.setText("jTextField2");
 
-        jLabel3.setText("Indica el archivo de salida");
+        jLabel3.setText("Nombre del archivo nuevo");
 
         jTextField3.setText("jTextField3");
 
@@ -53,7 +55,11 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"avi", "mp4", "mkv"}));
 
-        jLabel4.setText("Especifica el formato");
+        jLabel4.setText("Especifica el formato nuevo");
+
+        jLabel5.setText("Indica formato original");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"mp4", "avi", "mkv"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,28 +69,24 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jTextField1)
-                                                        .addComponent(jTextField2)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(jLabel1)
-                                                                        .addComponent(jLabel2)
-                                                                        .addComponent(jLabel3))
-                                                                .addGap(0, 0, Short.MAX_VALUE))
-                                                        .addComponent(jTextField3)))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, 373, Short.MAX_VALUE)
+                                                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jLabel4)
-                                                                .addGap(0, 0, Short.MAX_VALUE))
-                                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addContainerGap())
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(180, 180, 180)
-                                .addComponent(jButton2)
-                                .addContainerGap(203, Short.MAX_VALUE))
+                                                .addComponent(jLabel4))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(101, 101, 101)
+                                                .addComponent(jLabel1))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(147, 147, 147)
+                                                .addComponent(jButton2)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,11 +94,13 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -115,11 +119,10 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        String programa = jTextField1.getText();
-        String entrada = jTextField2.getText();
-        String salida = jTextField3.getText();
-        String formato = jComboBox1.getSelectedItem().toString();
-        String comando = programa + " -i " + entrada + " " + salida + "." + formato;
+        String programa = "C://Users//salva//Documents//FFMPEG//ffmpegejecutable//bin//ffmpeg.exe";
+        String entrada = "C://Codificar//" + jTextField2.getText() + "." + jComboBox2.getSelectedItem().toString();
+        String salida = "C://Codificar//" + jTextField3.getText() + "." + jComboBox1.getSelectedItem().toString();
+        String comando = programa + " -i " + entrada + " " + salida;
         try {
             ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
             Process miproceso = proceso.start();
