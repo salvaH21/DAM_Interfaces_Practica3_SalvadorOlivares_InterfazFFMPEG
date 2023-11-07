@@ -143,11 +143,9 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
                 comando = programa + " -i " + entrada + " " + "-an" + " " + salida;
                 ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
                 Process miproceso = proceso.start();
-                System.out.println("esta pulsado");
             } else {
                 ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
                 Process miproceso = proceso.start();
-                System.out.println("no esta pulsado");
             }
             System.out.println("ok");
         } catch (Exception e) {
