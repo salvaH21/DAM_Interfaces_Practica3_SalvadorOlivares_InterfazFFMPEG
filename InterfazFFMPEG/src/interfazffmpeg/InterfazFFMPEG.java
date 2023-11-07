@@ -13,6 +13,7 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JCheckBox jCheckBox1;
     // End of variables declaration   
 
     public InterfazFFMPEG() {
@@ -31,6 +32,7 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,11 +42,11 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre del archivo de entrada");
 
-        jTextField2.setText("jTextField2");
+        jTextField2.setText("");
 
         jLabel3.setText("Nombre del archivo nuevo");
 
-        jTextField3.setText("jTextField3");
+        jTextField3.setText("");
 
         jButton2.setText("Iniciar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -59,7 +61,10 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
 
         jLabel5.setText("Indica formato original");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"mp4", "avi", "mkv"}));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"avi", "mp4", "mkv"}));
+
+        jCheckBox1.setSelected(false);
+        jCheckBox1.setText("Video sin audio");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +89,10 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
                                                 .addGap(101, 101, 101)
                                                 .addComponent(jLabel1))
                                         .addGroup(layout.createSequentialGroup()
-                                                .addGap(147, 147, 147)
+                                                .addContainerGap()
+                                                .addComponent(jCheckBox1))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(152, 152, 152)
                                                 .addComponent(jButton2)))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -110,6 +118,8 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
+                                .addComponent(jCheckBox1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -129,11 +139,15 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
                 comando = programa + " -i " + entrada + " " + "-vn" + " C://Codificar//" + jTextField3.getText() + ".mp3";
                 ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
                 Process miproceso = proceso.start();
-            } /*else if () {
-                
-            }*/ else {
+            } else if (jCheckBox1.getSelectedObjects() != null) {
+                comando = programa + " -i " + entrada + " " + "-an" + " " + salida;
                 ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
                 Process miproceso = proceso.start();
+                System.out.println("esta pulsado");
+            } else {
+                ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
+                Process miproceso = proceso.start();
+                System.out.println("no esta pulsado");
             }
             System.out.println("ok");
         } catch (Exception e) {
@@ -142,6 +156,23 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
     }
 
     public static void main(String[] args) {
+
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(InterfazFFMPEG.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InterfazFFMPEG.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InterfazFFMPEG.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InterfazFFMPEG.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
