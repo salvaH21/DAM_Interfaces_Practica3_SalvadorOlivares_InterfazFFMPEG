@@ -53,7 +53,7 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"avi", "mp4", "mkv"}));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"avi", "mp4", "mkv", "mp3 (solo audio)"}));
 
         jLabel4.setText("Especifica el formato nuevo");
 
@@ -122,10 +122,19 @@ public class InterfazFFMPEG extends javax.swing.JFrame {
         String programa = "C://Users//salva//Documents//FFMPEG//ffmpegejecutable//bin//ffmpeg.exe";
         String entrada = "C://Codificar//" + jTextField2.getText() + "." + jComboBox2.getSelectedItem().toString();
         String salida = "C://Codificar//" + jTextField3.getText() + "." + jComboBox1.getSelectedItem().toString();
+        String formatoSalida = jComboBox1.getSelectedItem().toString();
         String comando = programa + " -i " + entrada + " " + salida;
         try {
-            ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
-            Process miproceso = proceso.start();
+            if (formatoSalida.equalsIgnoreCase("mp3 (solo audio)")) {
+                comando = programa + " -i " + entrada + " " + "-vn" + " C://Codificar//" + jTextField3.getText() + ".mp3";
+                ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
+                Process miproceso = proceso.start();
+            } /*else if () {
+                
+            }*/ else {
+                ProcessBuilder proceso = new ProcessBuilder("cmd.exe", "/c", comando);
+                Process miproceso = proceso.start();
+            }
             System.out.println("ok");
         } catch (Exception e) {
             e.printStackTrace();
